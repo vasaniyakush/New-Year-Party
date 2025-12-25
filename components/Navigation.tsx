@@ -17,6 +17,8 @@ export function Navigation() {
     { href: '/', label: 'Home' },
     { href: '/rsvp', label: 'RSVP' },
     { href: '/itinerary', label: 'Itinerary' },
+    { href: '/activities', label: 'Activities' },
+    { href: '/wallet', label: 'Wallet' },
     { href: '/expense-tracker', label: 'Expense Tracker' },
   ];
 

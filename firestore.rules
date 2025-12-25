@@ -1,9 +1,10 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Users collection - users can read their own document
+    // Users collection - all authenticated users can read all user documents (for wallet, RSVP, etc.)
+    // Users can only write their own document
     match /users/{userId} {
-      allow read: if request.auth != null && request.auth.uid == userId;
+      allow read: if request.auth != null;
       allow write: if request.auth != null && request.auth.uid == userId;
       // Admin role updates are done manually in Firebase Console
     }
@@ -12,6 +13,24 @@ service cloud.firestore {
     match /rsvps/{userId} {
       allow read: if request.auth != null;
       allow write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Wallets collection
+    match /wallets/{walletId} {
+      // All authenticated users can read all wallets (needed for transactions and user lists)
+      allow read: if request.auth != null;
+      // Users can update their own wallet (for sending money)
+      // Anyone can update wallets when balance increases (for receiving money or admin adding)
+      allow update: if request.auth != null && (
+        request.auth.uid == walletId ||
+        request.resource.data.balance > resource.data.balance
+      );
+      // Users can create their own wallet
+      // Anyone can create wallets for others if balance is positive (for admin)
+      allow create: if request.auth != null && (
+        request.auth.uid == walletId ||
+        (request.resource.data.balance > 0 && request.resource.data.userId == walletId)
+      );
     }
     
     // Deny all other access by default

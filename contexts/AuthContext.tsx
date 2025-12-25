@@ -50,7 +50,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           updatedAt: serverTimestamp(),
         };
         await setDoc(userDocRef, userData);
-        console.log('User document created successfully');
+        
+        // Initialize wallet with starting balance
+        const walletRef = doc(db, 'wallets', user.uid);
+        await setDoc(walletRef, {
+          userId: user.uid,
+          balance: 1000, // Starting balance
+          createdAt: serverTimestamp(),
+          updatedAt: serverTimestamp(),
+        });
+        
+        console.log('User document and wallet created successfully');
         setUserRole('basic');
       }
     } catch (error) {
