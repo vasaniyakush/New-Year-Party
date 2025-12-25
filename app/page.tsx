@@ -6,56 +6,99 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <ProtectedRoute>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-        <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+          {/* Hero Section */}
           <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white sm:text-5xl">
+            <h1 className="text-5xl font-bold text-gray-900 dark:text-white sm:text-6xl lg:text-7xl">
               Welcome to the New Year Party! 🎉
             </h1>
-            <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
+            <p className="mt-6 text-xl text-gray-600 dark:text-gray-400">
               Join us for an unforgettable celebration
             </p>
           </div>
 
+          {/* Quick Links Grid */}
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <Link
+              href="/rsvp"
+              className="group rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 p-6 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+            >
+              <div className="text-3xl mb-2">📝</div>
+              <h3 className="text-xl font-semibold">RSVP</h3>
+              <p className="mt-2 text-sm opacity-90">Confirm your attendance</p>
+            </Link>
+
+            <Link
+              href="/itinerary"
+              className="group rounded-lg bg-gradient-to-br from-purple-500 to-purple-600 p-6 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+            >
+              <div className="text-3xl mb-2">📅</div>
+              <h3 className="text-xl font-semibold">Itinerary</h3>
+              <p className="mt-2 text-sm opacity-90">View event schedule</p>
+            </Link>
+
+            <Link
+              href="/activities"
+              className="group rounded-lg bg-gradient-to-br from-pink-500 to-pink-600 p-6 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+            >
+              <div className="text-3xl mb-2">🎮</div>
+              <h3 className="text-xl font-semibold">Activities</h3>
+              <p className="mt-2 text-sm opacity-90">Fun games & activities</p>
+            </Link>
+
+            <Link
+              href="/wallet"
+              className="group rounded-lg bg-gradient-to-br from-yellow-500 to-yellow-600 p-6 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+            >
+              <div className="text-3xl mb-2">💰</div>
+              <h3 className="text-xl font-semibold">Wallet</h3>
+              <p className="mt-2 text-sm opacity-90">Manage your coins</p>
+            </Link>
+
+            <Link
+              href="/expense-tracker"
+              className="group rounded-lg bg-gradient-to-br from-green-500 to-green-600 p-6 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+            >
+              <div className="text-3xl mb-2">💳</div>
+              <h3 className="text-xl font-semibold">Expense Tracker</h3>
+              <p className="mt-2 text-sm opacity-90">Track expenses</p>
+            </Link>
+          </div>
+
+          {/* Event Details */}
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             <div className="rounded-lg bg-white p-6 shadow-md dark:bg-gray-800">
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
                 Event Details
               </h2>
-              <ul className="mt-4 space-y-2 text-gray-600 dark:text-gray-400">
-                <li>📅 <strong>Date:</strong> New Year's Eve</li>
-                <li>🕐 <strong>Time:</strong> 8:00 PM onwards</li>
-                <li>📍 <strong>Location:</strong> Foxtrot Farmhouse, Karolan Ka Barh, Jaipur</li>
-                <li>👔 <strong>Dress Code:</strong> [Add dress code]</li>
+              <ul className="mt-4 space-y-3 text-gray-600 dark:text-gray-400">
+                <li className="flex items-start">
+                  <span className="mr-3 text-xl">📅</span>
+                  <div>
+                    <strong className="text-gray-900 dark:text-white">Date:</strong> New Year's Eve
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-3 text-xl">🕐</span>
+                  <div>
+                    <strong className="text-gray-900 dark:text-white">Time:</strong> 8:00 PM onwards
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-3 text-xl">📍</span>
+                  <div>
+                    <strong className="text-gray-900 dark:text-white">Location:</strong> Foxtrot Farmhouse, Karolan Ka Barh, Jaipur
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-3 text-xl">👔</span>
+                  <div>
+                    <strong className="text-gray-900 dark:text-white">Dress Code:</strong> [Add dress code]
+                  </div>
+                </li>
               </ul>
             </div>
-
-            <div className="rounded-lg bg-white p-6 shadow-md dark:bg-gray-800">
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                Quick Links
-              </h2>
-              <div className="mt-4 space-y-3">
-                <Link
-                  href="/rsvp"
-                  className="block rounded-md bg-blue-600 px-4 py-2 text-center text-white transition-colors hover:bg-blue-700"
-                >
-                  RSVP Now
-                </Link>
-                <Link
-                  href="/itinerary"
-                  className="block rounded-md bg-gray-200 px-4 py-2 text-center text-gray-800 transition-colors hover:bg-gray-300 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
-                >
-                  View Itinerary
-                </Link>
-                <Link
-                  href="/expense-tracker"
-                  className="block rounded-md bg-gray-200 px-4 py-2 text-center text-gray-800 transition-colors hover:bg-gray-300 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
-                >
-                  Expense Tracker
-                </Link>
-              </div>
-            </div>
-          </div>
 
           {/* Venue Location Section */}
           <div className="mt-12 rounded-lg bg-white p-6 shadow-md dark:bg-gray-800">
@@ -83,6 +126,21 @@ export default function Home() {
             </div>
           </div>
 
+            <div className="rounded-lg bg-white p-6 shadow-md dark:bg-gray-800">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+                What to Expect
+              </h2>
+              <ul className="mt-4 space-y-2 text-gray-600 dark:text-gray-400">
+                <li>🎵 Live Music & DJ</li>
+                <li>🍽️ Delicious Food & Drinks</li>
+                <li>🎮 Fun Activities & Games</li>
+                <li>🎊 New Year Countdown</li>
+                <li>🎉 Amazing Party Vibes</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* About the Event */}
           <div className="mt-12 rounded-lg bg-white p-6 shadow-md dark:bg-gray-800">
             <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
               About the Event
@@ -93,10 +151,11 @@ export default function Home() {
             </p>
             <p className="mt-4 text-gray-600 dark:text-gray-400">
               Don't forget to RSVP so we can plan accordingly. Check out the itinerary for the full schedule 
-              of events throughout the evening.
+              of events throughout the evening, and explore our fun activities to keep the party going!
             </p>
           </div>
 
+          {/* Contact Information */}
           <div className="mt-12 rounded-lg bg-white p-6 shadow-md dark:bg-gray-800">
             <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
               Contact Information
@@ -104,9 +163,15 @@ export default function Home() {
             <p className="mt-4 text-gray-600 dark:text-gray-400">
               For any questions or special requests, please contact:
             </p>
-            <ul className="mt-2 space-y-1 text-gray-600 dark:text-gray-400">
-              <li>📧 Email: [Add contact email]</li>
-              <li>📱 Phone: [Add contact phone]</li>
+            <ul className="mt-2 space-y-2 text-gray-600 dark:text-gray-400">
+              <li className="flex items-center">
+                <span className="mr-3 text-xl">📧</span>
+                <span>Email: [Add contact email]</span>
+              </li>
+              <li className="flex items-center">
+                <span className="mr-3 text-xl">📱</span>
+                <span>Phone: [Add contact phone]</span>
+              </li>
             </ul>
           </div>
         </div>
