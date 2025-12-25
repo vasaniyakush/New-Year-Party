@@ -70,7 +70,7 @@ export default function TruthAndDarePage() {
     return dares[Math.floor(Math.random() * dares.length)];
   };
 
-  const getRandomAny = () => {
+  const getRandomAny = (): { type: 'truth' | 'dare'; challenge: string } => {
     const isTruth = Math.random() < 0.5;
     return {
       type: isTruth ? 'truth' : 'dare',
