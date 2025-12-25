@@ -37,20 +37,29 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (userDoc.exists()) {
         // User document exists, get the role
         const role = userDoc.data().role as UserRole;
+        console.log('User document found, role:', role);
         setUserRole(role || 'basic');
       } else {
         // New user - create document with basic role
-        await setDoc(userDocRef, {
+        console.log('Creating new user document for:', user.uid);
+        const userData = {
           email: user.email,
           displayName: user.displayName,
-          role: 'basic',
+          role: 'basic' as const,
           createdAt: serverTimestamp(),
           updatedAt: serverTimestamp(),
-        });
+        };
+        await setDoc(userDocRef, userData);
+        console.log('User document created successfully');
         setUserRole('basic');
       }
     } catch (error) {
-      console.error('Error fetching user role:', error);
+      console.error('Error fetching/creating user role:', error);
+      console.error('Error details:', {
+        message: error instanceof Error ? error.message : 'Unknown error',
+        code: (error as any)?.code,
+        userUid: user.uid,
+      });
       // Default to basic on error
       setUserRole('basic');
     }
