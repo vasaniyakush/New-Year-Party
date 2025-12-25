@@ -152,7 +152,7 @@ export default function WalletPage() {
         }
       });
 
-      alert(`Successfully sent $${sendAmount.toFixed(2)}!`);
+      alert(`Successfully sent 💰${sendAmount.toFixed(2)}!`);
       setAmount('');
       setRecipientId('');
       await loadWallet();
@@ -205,7 +205,7 @@ export default function WalletPage() {
         }
       });
 
-      alert(`Successfully added $${addAmount.toFixed(2)}!`);
+      alert(`Successfully added 💰${addAmount.toFixed(2)}!`);
       setAdminAmount('');
       setAdminRecipientId('');
       if (adminRecipientId === user.uid) {
@@ -274,9 +274,31 @@ export default function WalletPage() {
           {/* Wallet Balance */}
           <div className="mt-8 rounded-lg bg-gradient-to-r from-green-500 to-emerald-600 p-8 text-white shadow-lg">
             <p className="text-sm opacity-90">Your Balance</p>
-            <p className="mt-2 text-5xl font-bold">
-              ${wallet?.balance.toFixed(2) || '0.00'}
-            </p>
+            <div className="mt-2 flex items-center justify-center gap-3">
+              <svg
+                className="h-14 w-14 drop-shadow-lg"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <linearGradient id="coinGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#FFD700" />
+                    <stop offset="50%" stopColor="#FFA500" />
+                    <stop offset="100%" stopColor="#FF8C00" />
+                  </linearGradient>
+                  <filter id="shadow">
+                    <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#000" floodOpacity="0.3"/>
+                  </filter>
+                </defs>
+                <circle cx="12" cy="12" r="10" fill="url(#coinGradient)" stroke="#FFD700" strokeWidth="1.5" filter="url(#shadow)"/>
+                <circle cx="12" cy="12" r="7" fill="none" stroke="#FFA500" strokeWidth="1" opacity="0.6"/>
+                <circle cx="12" cy="12" r="4" fill="none" stroke="#FFD700" strokeWidth="0.5" opacity="0.4"/>
+              </svg>
+              <p className="text-5xl font-bold">
+                {wallet?.balance.toFixed(2) || '0.00'}
+              </p>
+            </div>
           </div>
 
           {/* Send Money Section */}
@@ -321,7 +343,7 @@ export default function WalletPage() {
                   required
                 />
                 <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                  Available: ${wallet?.balance.toFixed(2) || '0.00'}
+                  Available: 💰{wallet?.balance.toFixed(2) || '0.00'}
                 </p>
               </div>
               <button
