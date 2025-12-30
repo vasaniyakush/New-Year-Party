@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { navbarItems } from '@/lib/navigationConfig';
 
 export function Navigation() {
   const { user, logout } = useAuth();
@@ -15,15 +16,7 @@ export function Navigation() {
     return null;
   }
 
-  const navItems = [
-    { href: '/', label: 'Home' },
-    { href: '/rsvp', label: 'RSVP' },
-    { href: '/itinerary', label: 'Itinerary' },
-    { href: '/food-menu', label: 'Food Menu' },
-    { href: '/activities', label: 'Activities' },
-    { href: '/wallet', label: 'Wallet' },
-    { href: '/expense-tracker', label: 'Expense Tracker' },
-  ];
+  const navItems = navbarItems;
 
   return (
     <nav className="border-b border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">

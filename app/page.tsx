@@ -2,6 +2,7 @@
 
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import Link from 'next/link';
+import { navigationItems } from '@/lib/navigationConfig';
 
 export default function Home() {
   return (
@@ -20,59 +21,19 @@ export default function Home() {
 
           {/* Quick Links Grid */}
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <Link
-              href="/rsvp"
-              className="group rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 p-6 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-            >
-              <div className="text-3xl mb-2">📝</div>
-              <h3 className="text-xl font-semibold">RSVP</h3>
-              <p className="mt-2 text-sm opacity-90">Confirm your attendance</p>
-            </Link>
-
-            <Link
-              href="/itinerary"
-              className="group rounded-lg bg-gradient-to-br from-purple-500 to-purple-600 p-6 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-            >
-              <div className="text-3xl mb-2">📅</div>
-              <h3 className="text-xl font-semibold">Itinerary</h3>
-              <p className="mt-2 text-sm opacity-90">View event schedule</p>
-            </Link>
-
-            <Link
-              href="/food-menu"
-              className="group rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 p-6 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-            >
-              <div className="text-3xl mb-2">🍽️</div>
-              <h3 className="text-xl font-semibold">Starvation</h3>
-              <p className="mt-2 text-sm opacity-90">View our delicious menu</p>
-            </Link>
-
-            <Link
-              href="/activities"
-              className="group rounded-lg bg-gradient-to-br from-pink-500 to-pink-600 p-6 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-            >
-              <div className="text-3xl mb-2">🎮</div>
-              <h3 className="text-xl font-semibold">Activities</h3>
-              <p className="mt-2 text-sm opacity-90">Fun games & activities</p>
-            </Link>
-
-            <Link
-              href="/wallet"
-              className="group rounded-lg bg-gradient-to-br from-yellow-500 to-yellow-600 p-6 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-            >
-              <div className="text-3xl mb-2">💰</div>
-              <h3 className="text-xl font-semibold">Wallet</h3>
-              <p className="mt-2 text-sm opacity-90">Manage your coins</p>
-            </Link>
-
-            <Link
-              href="/expense-tracker"
-              className="group rounded-lg bg-gradient-to-br from-green-500 to-green-600 p-6 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-            >
-              <div className="text-3xl mb-2">💳</div>
-              <h3 className="text-xl font-semibold">Expense Tracker</h3>
-              <p className="mt-2 text-sm opacity-90">Track expenses</p>
-            </Link>
+            {navigationItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`group rounded-lg bg-gradient-to-br ${item.gradientFrom} ${item.gradientTo} p-6 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl`}
+              >
+                {item.emoji && <div className="text-3xl mb-2">{item.emoji}</div>}
+                <h3 className="text-xl font-semibold">{item.label === 'Food Menu' ? 'Starvation' : item.label}</h3>
+                {item.description && (
+                  <p className="mt-2 text-sm opacity-90">{item.description}</p>
+                )}
+              </Link>
+            ))}
           </div>
 
           {/* Event Details */}
