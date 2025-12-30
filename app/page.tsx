@@ -39,6 +39,15 @@ export default function Home() {
             </Link>
 
             <Link
+              href="/food-menu"
+              className="group rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 p-6 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+            >
+              <div className="text-3xl mb-2">🍽️</div>
+              <h3 className="text-xl font-semibold">Starvation</h3>
+              <p className="mt-2 text-sm opacity-90">View our delicious menu</p>
+            </Link>
+
+            <Link
               href="/activities"
               className="group rounded-lg bg-gradient-to-br from-pink-500 to-pink-600 p-6 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl"
             >
