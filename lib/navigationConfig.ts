@@ -6,6 +6,8 @@ export interface NavigationItem {
   gradientTo?: string;
   description?: string;
   adminOnly?: boolean;
+  hideFromNavbar?: boolean;
+  hideFromHome?: boolean;
 }
 
 // Single source of truth for navigation order
@@ -58,14 +60,17 @@ export const navigationItems: NavigationItem[] = [
     gradientFrom: 'from-purple-500',
     gradientTo: 'to-purple-600',
     description: 'View event schedule',
+    hideFromNavbar: true,
+    hideFromHome: true,
   },
   {
-    href: '/countdown',
+    href: '/activities/countdown',
     label: 'Countdown',
     emoji: '⏰',
     gradientFrom: 'from-indigo-500',
     gradientTo: 'to-indigo-600',
     description: 'New Year countdown timer',
+    hideFromNavbar: true,
   },
   {
     href: '/cocktail-recipes',

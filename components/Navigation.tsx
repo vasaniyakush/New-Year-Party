@@ -16,9 +16,9 @@ export function Navigation() {
     return null;
   }
 
-  // Filter admin-only items
+  // Filter admin-only items and items hidden from navbar
   const navItems = navbarItems.filter(
-    (item) => !item.adminOnly || userRole === 'admin'
+    (item) => (!item.adminOnly || userRole === 'admin') && !item.hideFromNavbar
   );
 
   return (

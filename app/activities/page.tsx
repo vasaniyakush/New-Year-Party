@@ -29,6 +29,14 @@ const activities: Activity[] = [
     emoji: '🎲',
     available: true,
   },
+  {
+    id: 'countdown',
+    name: 'New Year Countdown',
+    description: 'Watch the synchronized countdown to New Year!',
+    href: '/activities/countdown',
+    emoji: '⏰',
+    available: true,
+  },
   // Add more activities here as they are developed
   // {
   //   id: 'activity-2',

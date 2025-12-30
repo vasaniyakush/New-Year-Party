@@ -8,9 +8,9 @@ import { useAuth } from '@/contexts/AuthContext';
 export default function Home() {
   const { userRole } = useAuth();
   
-  // Filter admin-only items
+  // Filter admin-only items and items hidden from home
   const visibleItems = navigationItems.filter(
-    (item) => !item.adminOnly || userRole === 'admin'
+    (item) => (!item.adminOnly || userRole === 'admin') && !item.hideFromHome
   );
 
   return (
@@ -30,17 +30,17 @@ export default function Home() {
           {/* Quick Links Grid */}
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {visibleItems.map((item) => (
-              <Link
+            <Link
                 key={item.href}
                 href={item.href}
                 className={`group rounded-lg bg-gradient-to-br ${item.gradientFrom} ${item.gradientTo} p-6 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl`}
-              >
+            >
                 {item.emoji && <div className="text-3xl mb-2">{item.emoji}</div>}
                 <h3 className="text-xl font-semibold">{item.label === 'Food Menu' ? 'Starvation' : item.label}</h3>
                 {item.description && (
                   <p className="mt-2 text-sm opacity-90">{item.description}</p>
                 )}
-              </Link>
+            </Link>
             ))}
           </div>
 

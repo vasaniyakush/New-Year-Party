@@ -2,6 +2,7 @@
 
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 interface TimeLeft {
   days: number;
@@ -71,6 +72,28 @@ export default function CountdownPage() {
     <ProtectedRoute>
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center">
         <div className="text-center px-4 py-12">
+          <div className="mb-6">
+            <Link
+              href="/activities"
+              className="inline-flex items-center text-white/80 hover:text-white transition-colors"
+            >
+              <svg
+                className="mr-2 h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+              Back to Activities
+            </Link>
+          </div>
+
           {isNewYear ? (
             <div className="space-y-8">
               <div className="text-9xl animate-bounce">🎉</div>
