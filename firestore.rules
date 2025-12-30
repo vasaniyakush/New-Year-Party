@@ -1,6 +1,12 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    // Helper function to check if user is admin
+    function isAdmin() {
+      return request.auth != null && 
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
     // Users collection - all authenticated users can read all user documents (for wallet, RSVP, etc.)
     // Users can only write their own document
     match /users/{userId} {
@@ -30,6 +36,16 @@ service cloud.firestore {
       allow create: if request.auth != null && (
         request.auth.uid == walletId ||
         (request.resource.data.balance > 0 && request.resource.data.userId == walletId)
+      );
+    }
+    
+    // Expenses collection - all authenticated users can read all expenses, users can create and delete their own or admins can delete any
+    match /expenses/{expenseId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null && request.resource.data.createdBy == request.auth.uid;
+      allow delete: if request.auth != null && (
+        resource.data.createdBy == request.auth.uid || 
+        isAdmin()
       );
     }
     
