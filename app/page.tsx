@@ -75,6 +75,20 @@ export default function Home() {
                     <strong className="text-gray-900 dark:text-white">Dress Code:</strong> SKIT Uniform
                   </div>
                 </li>
+                <li className="flex items-start">
+                  <span className="mr-3 text-xl">📸</span>
+                  <div>
+                    <strong className="text-gray-900 dark:text-white">Photos:</strong>{' '}
+                    <a
+                      href="https://photos.app.goo.gl/9sLS7iNVtMEpSSDr5"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-700 underline dark:text-blue-400 dark:hover:text-blue-300"
+                    >
+                      Add your photos here
+                    </a>
+                  </div>
+                </li>
               </ul>
             </div>
 

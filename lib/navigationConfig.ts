@@ -51,23 +51,31 @@ export const navigationItems: NavigationItem[] = [
         gradientTo: 'to-green-600',
         description: 'Track expenses',
     },
-    {
-      href: '/itinerary',
-      label: 'Itinerary',
-      emoji: '📅',
-      gradientFrom: 'from-purple-500',
-      gradientTo: 'to-purple-600',
-      description: 'View event schedule',
-    },
-    {
-      href: '/cocktail-recipes',
-      label: 'Cocktail Recipes',
-      emoji: '🍸',
-      gradientFrom: 'from-amber-500',
-      gradientTo: 'to-amber-600',
-      description: 'House bar recipe list',
-      adminOnly: true,
-    },
+  {
+    href: '/itinerary',
+    label: 'Itinerary',
+    emoji: '📅',
+    gradientFrom: 'from-purple-500',
+    gradientTo: 'to-purple-600',
+    description: 'View event schedule',
+  },
+  {
+    href: '/countdown',
+    label: 'Countdown',
+    emoji: '⏰',
+    gradientFrom: 'from-indigo-500',
+    gradientTo: 'to-indigo-600',
+    description: 'New Year countdown timer',
+  },
+  {
+    href: '/cocktail-recipes',
+    label: 'Cocktail Recipes',
+    emoji: '🍸',
+    gradientFrom: 'from-amber-500',
+    gradientTo: 'to-amber-600',
+    description: 'House bar recipe list',
+    adminOnly: true,
+  },
 ];
 
 // Navigation items for navbar (includes Home)
