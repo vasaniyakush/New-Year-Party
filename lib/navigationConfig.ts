@@ -5,6 +5,7 @@ export interface NavigationItem {
   gradientFrom?: string;
   gradientTo?: string;
   description?: string;
+  adminOnly?: boolean;
 }
 
 // Single source of truth for navigation order
@@ -57,6 +58,15 @@ export const navigationItems: NavigationItem[] = [
       gradientFrom: 'from-purple-500',
       gradientTo: 'to-purple-600',
       description: 'View event schedule',
+    },
+    {
+      href: '/cocktail-recipes',
+      label: 'Cocktail Recipes',
+      emoji: '🍸',
+      gradientFrom: 'from-amber-500',
+      gradientTo: 'to-amber-600',
+      description: 'House bar recipe list',
+      adminOnly: true,
     },
 ];
 

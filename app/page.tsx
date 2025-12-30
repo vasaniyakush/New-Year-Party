@@ -3,8 +3,16 @@
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import Link from 'next/link';
 import { navigationItems } from '@/lib/navigationConfig';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function Home() {
+  const { userRole } = useAuth();
+  
+  // Filter admin-only items
+  const visibleItems = navigationItems.filter(
+    (item) => !item.adminOnly || userRole === 'admin'
+  );
+
   return (
     <ProtectedRoute>
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
@@ -21,7 +29,7 @@ export default function Home() {
 
           {/* Quick Links Grid */}
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {navigationItems.map((item) => (
+            {visibleItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -52,7 +60,7 @@ export default function Home() {
                 <li className="flex items-start">
                   <span className="mr-3 text-xl">🕐</span>
                   <div>
-                    <strong className="text-gray-900 dark:text-white">Time:</strong> 8:00 PM onwards
+                    <strong className="text-gray-900 dark:text-white">Time:</strong> 5:00 PM onwards
                   </div>
                 </li>
                 <li className="flex items-start">
@@ -64,7 +72,7 @@ export default function Home() {
                 <li className="flex items-start">
                   <span className="mr-3 text-xl">👔</span>
                   <div>
-                    <strong className="text-gray-900 dark:text-white">Dress Code:</strong> [Add dress code]
+                    <strong className="text-gray-900 dark:text-white">Dress Code:</strong> SKIT Uniform
                   </div>
                 </li>
               </ul>
@@ -102,6 +110,7 @@ export default function Home() {
               </h2>
               <ul className="mt-4 space-y-2 text-gray-600 dark:text-gray-400">
                 <li>🎵 Live Music & DJ</li>
+                <li>🔥 Bonfire</li>
                 <li>🍽️ Delicious Food & Drinks</li>
                 <li>🎮 Fun Activities & Games</li>
                 <li>🎊 New Year Countdown</li>
@@ -136,11 +145,11 @@ export default function Home() {
             <ul className="mt-2 space-y-2 text-gray-600 dark:text-gray-400">
               <li className="flex items-center">
                 <span className="mr-3 text-xl">📧</span>
-                <span>Email: [Add contact email]</span>
+                <span>Email: contact@vasaniyakush.me</span>
               </li>
               <li className="flex items-center">
                 <span className="mr-3 text-xl">📱</span>
-                <span>Phone: [Add contact phone]</span>
+                <span>Phone: +91 9521155071</span>
               </li>
             </ul>
           </div>

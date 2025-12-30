@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { navbarItems } from '@/lib/navigationConfig';
 
 export function Navigation() {
-  const { user, logout } = useAuth();
+  const { user, logout, userRole } = useAuth();
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -16,7 +16,10 @@ export function Navigation() {
     return null;
   }
 
-  const navItems = navbarItems;
+  // Filter admin-only items
+  const navItems = navbarItems.filter(
+    (item) => !item.adminOnly || userRole === 'admin'
+  );
 
   return (
     <nav className="border-b border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">

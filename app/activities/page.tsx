@@ -21,6 +21,14 @@ const activities: Activity[] = [
     emoji: '🎯',
     available: true,
   },
+  {
+    id: 'random-user',
+    name: 'Get Random User',
+    description: 'Get a random person from all RSVP\'d attendees!',
+    href: '/activities/random-user',
+    emoji: '🎲',
+    available: true,
+  },
   // Add more activities here as they are developed
   // {
   //   id: 'activity-2',
